@@ -3,6 +3,7 @@ let data;
 let maxMortality = 0;
 let totalDuration = 0;
 let continents = [];
+let selectedID;
 
 // Margine attorno al grafico
 let margin = 20;
@@ -89,6 +90,7 @@ function draw() {
       mouseY <= margin + scaledMortality
     ) {
       label = country;
+      selectedID= data.getString(rowNumber,"famine_id")
     }
 
     // Sposta la prossima barra dopo quella corrente, lasciando il gutter tra le due.
@@ -101,4 +103,12 @@ function draw() {
     // L'offset evita di disegnare il testo esattamente sotto il puntatore.
     text(label, mouseX + 8, mouseY + 16);
   }
+}
+
+function mousePressed(){
+  //creo url
+  let myURL="detail.html?famine_id="+selectedID
+  
+  //apri URL
+  window.location.href=myURL;
 }
